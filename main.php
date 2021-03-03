@@ -10,6 +10,7 @@ CSC-155-051DV_2021SP -->
 require("library/functions.php");
 
 // functions
+startup();
 ?>
 </head>
 

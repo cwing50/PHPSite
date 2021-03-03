@@ -10,6 +10,8 @@ CSC-155-051DV_2021SP -->
 require("library/functions.php");
 
 // functions
+session_start();
+
 function getPost( $name )
 {
 	if ( isset($_POST[$name]) )
@@ -23,6 +25,7 @@ if ( isset($_POST["submit"]) )
 {
 	if ( $_POST["siteusername"] == "username" && $_POST["sitepassword"] == "password" )
 	{
+		$_SESSION["user"] = $_POST["siteusername"];
 		header("Location: main.php");
 	}
 	else
