@@ -17,7 +17,10 @@ startup();
 <body>
 <?php heading(); ?>
 <h1>Shopping Cart</h1>
-
+<p>Mustang: <?php echo $_SESSION['mustang'];?></p>
+<p>Camaro: <?php echo $_SESSION['camaro'];?></p>
+<p>Challenger: <?php echo $_SESSION['challenger'];?></p>
+<p>Charger: <?php echo $_SESSION['charger'];?></p>
 <?php footer(); ?>
 </body>
 </html>
