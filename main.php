@@ -11,13 +11,22 @@ require("library/functions.php");
 
 // functions
 startup();
+
+if ( isset($_POST["set"]) )
+{
+	setcookie("personname",$_POST['name'], time() + (86400 * 30));
+	header("Refresh:0");
+}
 ?>
 </head>
 
 <body>
 <?php heading(); ?>
-<h1>Welcome!</h1>
-
+<h1>Main Page</h1>
+<form method='POST'>
+What shall we call you name wise?: <input type='text' name='name'
+value=''><input type='submit' name='set' value='Set'>
+</form>
 <?php footer(); ?>
 </body>
 </html>
