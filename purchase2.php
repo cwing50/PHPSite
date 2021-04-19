@@ -45,8 +45,8 @@ else
 <h1>2020 Camaro ZL1</h1>
 <h3>Specs:</h3>
 <p>650HP, 650 lb.ft torque</p>
-<p>MSRP: $63,000
-<img src='library/camaro.jpg'/>
+<p>MSRP: $63,000</p>
+<img src='library/images/camaro.jpg'/>
 <form method='POST'>
 <input type='submit' name='submit' value='Purchase One'>
 <input type='submit' name='submit' value='Remove One from Cart'>

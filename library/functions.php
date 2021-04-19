@@ -72,4 +72,53 @@ function startup()
 	}
 }
 
+function getPost( $name )
+{
+	if ( isset($_POST[$name]) )
+	{
+		return htmlspecialchars($_POST[$name]);
+	}
+	return "";
+}
+
+function getSession( $name )
+{	
+	if ( isset($_SESSION[$name]) )
+	{
+		return $_SESSION[$name];
+	}
+	return "";
+}
+
+function getConn()
+{
+	$user = "cwingler4";
+	$conn = mysqli_connect("localhost",$user,$user,$user);
+	if (mysqli_connect_errno()) {
+	echo "<p>Failed to connect to MySQL: " . mysqli_connect_error() . "</p>";
+	}
+	return $conn;
+}
+
+function lookupUsername($conn, $username)
+{
+	$stmt = $conn->prepare("SELECT * FROM user WHERE username=?");
+	$stmt->bind_param("s", $username);
+	
+	$stmt->execute();
+	$result = $stmt->get_result();
+	$num_rows = mysqli_num_rows($result);
+	if ($num_rows == 0)
+	{
+	return 0;
+	}
+	else if ($num_rows > 1)
+	{
+	header("Location: goodbye.php");
+	}
+	else
+	{
+	return $result->fetch_assoc();
+	}
+}	
 ?>

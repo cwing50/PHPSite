@@ -10,27 +10,33 @@ CSC-155-051DV_2021SP -->
 require("library/functions.php");
 
 // functions
-session_start();
-
-function getPost( $name )
+/*function getPost( $name )
 {
 	if ( isset($_POST[$name]) )
 	{
 		return htmlspecialchars($_POST[$name]);
 	}
 	return "";
-}
+}*/
+session_start();
+$conn = getConn();
 
 if ( isset($_POST["submit"]) )
 {
-	if ( $_POST["siteusername"] == "username" && $_POST["sitepassword"] == "password" )
+	$row = lookupUsername($conn, getPost('username'));
+	if ($row == 0)
 	{
-		$_SESSION["user"] = $_POST["siteusername"];
-		header("Location: main.php");
+	echo "Invalid USERNAME or password";
+	}
+	else if ( password_verify($_POST["password"], $row['encrypted_password'] ))
+	{
+	$_SESSION["user"] = getPost("username");
+	$_SESSION["group"] = $row['usergroup'];
+	header("Location: main.php");
 	}
 	else
 	{
-		echo "Incorrect username or password";
+	echo "Invalid username or PASSWORD";
 	}
 }
 
@@ -42,11 +48,12 @@ if ( isset($_POST["submit"]) )
 <h2>Please enter the username and password below.</h2>
 <h3>***DO NOT ENTER YOUR REAL USERNAME OR PASSWORD***</h3>
 <form method='POST'>
-Username: <input type='text' name='siteusername' value='<?php echo getPost("siteusername");?>'> <br/>
-Password: <input type='password' name='sitepassword' value='<?php echo getPost("sitepassword");?>'> <br/>
+Username: <input type='text' name='username' value='<?php echo getPost("siteusername");?>'> <br/>
+Password: <input type='password' name='password' value='<?php echo getPost("sitepassword");?>'> <br/>
 <input type='submit' name='submit' value='Login'>
-<p> USERNAME = 'username' PASSWORD = 'password' </p>
-
+<br />
+<br />
+<a href='createuser.php'>Create New User</a>
 </form>
 
 

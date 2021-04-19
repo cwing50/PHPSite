@@ -46,7 +46,7 @@ else
 <h3>Specs:</h3>
 <p>707HP, 650 lb.ft torque</p>
 <p>MSRP: $69,995</p>
-<img src='library/charger.jpg'/>
+<img src='library/images/charger.jpg'/>
 <form method='POST'>
 <input type='submit' name='submit' value='Purchase One'>
 <input type='submit' name='submit' value='Remove One from Cart'>

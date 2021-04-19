@@ -46,7 +46,7 @@ else
 <h3>Specs:</h3>
 <p>760HP and 625 lb.ft torque</p>
 <p>MSRP: $73,995</p>
-<img src='library/mustang.jpg'/>
+<img src='library/images/mustang.jpg'/>
 <form method='POST'>
 <input type='submit' name='submit' value='Purchase One'>
 <input type='submit' name='submit' value='Remove One from Cart'>
